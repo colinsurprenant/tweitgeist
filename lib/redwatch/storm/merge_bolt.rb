@@ -5,7 +5,7 @@ module Redwatch
     output_fields :json_rankings
 
     TOP_N = 10
-    PUSH_INTERVAL = 10
+    PUSH_INTERVAL = 5
 
     on_init do
       @rankings = Hash.new
