@@ -4,6 +4,11 @@ module Redwatch
   class RollingCounter
     attr_writer :active_bucket
 
+    # @param bucket_count [Fixnum] buckets ring size 
+    # @param bucket_seconds [Fixnum] bucket timeout in seconds
+    # @param options [Hash] options
+    # @option options [Boolean] :cleaner => false to disable automatic bucket expiration 
+    # @yield [Object, Fixnum] call block upon bucket expiration with updated count for key
     def initialize(bucket_count, bucket_seconds, options = {}, &on_clean)
       @bucket_count = bucket_count
       @bucket_seconds = bucket_seconds
