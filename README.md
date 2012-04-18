@@ -63,15 +63,15 @@ $ ruby lib/redwatch/twitter/twitter_reader.rb
 see the [viewer README](https://github.com/colinsurprenant/redwatch/tree/master/lib/viewer)
 
 ## Author
-Colin Surprenant, [@colinsurprenant][twitter], [http://github.com/colinsurprenant][github], colin.surprenant@needium.com, colin.surprenant@gmail.com
+Colin Surprenant, [@colinsurprenant][twitter], [https://github.com/colinsurprenant][github], colin.surprenant@needium.com, colin.surprenant@gmail.com
 
 ## Contributors
-Francois Lafortune, [@quickredfox](http://twitter.com/quickredfox), [http://github.com/quickredfox](http://github.com/quickredfox), code@quickredfox.at
+Francois Lafortune, [@quickredfox](http://twitter.com/quickredfox), [https://github.com/quickredfox](http://github.com/quickredfox), code@quickredfox.at
 
-Nicolas Brochu, [@nbrochu](http://twitter.com/nbrochu), [http://github.com/nbrochu](http://github.com/nbrochu), info@nicholasbrochu.com
+Nicolas Brochu, [@nbrochu](http://twitter.com/nbrochu), [https://github.com/nbrochu](http://github.com/nbrochu), info@nicholasbrochu.com
 
 ## License
 Redwatch is distributed under the Apache License, Version 2.0. 
 
 [twitter]: http://twitter.com/colinsurprenant
-[github]: http://github.com/colinsurprenant
+[github]: https://github.com/colinsurprenant
