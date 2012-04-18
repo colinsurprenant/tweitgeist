@@ -14,11 +14,14 @@ module Redwatch
     end
 
     on_receive :emit => false do |tuple|
-      merge = JSON.parse(tuple.getString(0))
+      # tuple is [[hashtag1, count1], [hashtag2, count2], ...]
+      update = Hash[*JSON.parse(tuple.getString(0)).flatten]
 
-      merge.each{|key, count| @rankings[key] = count}
+      @rankings.merge!(update)
       sorted = @rankings.sort{|a, b| b[1] <=> a[1]} # decreasing order on count
       @rankings.delete(sorted.pop[0]) while sorted.size > TOP_N 
+
+      # poor's man delayed push, ok since we receive infrequent tuples
       if (now = Time.now.to_i) > (@last + PUSH_INTERVAL)
         @last = now
         @redis.rpush("rankings", sorted.to_json) unless sorted.empty? 
