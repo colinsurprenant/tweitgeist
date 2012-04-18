@@ -66,7 +66,7 @@ see the [viewer README](https://github.com/colinsurprenant/redwatch/tree/master/
 Colin Surprenant, [@colinsurprenant][twitter], [http://github.com/colinsurprenant][github], colin.surprenant@needium.com, colin.surprenant@gmail.com
 
 ## Contributors
-Francois Lafortune, [@quickredfox][http://twitter.com/quickredfox], [http://github.com/quickredfox][http://github.com/quickredfox], code@quickredfox.at
+Francois Lafortune, [@quickredfox](http://twitter.com/quickredfox), [http://github.com/quickredfox](http://github.com/quickredfox), code@quickredfox.at
 
 ## License
 Redwatch is distributed under the Apache License, Version 2.0. 
