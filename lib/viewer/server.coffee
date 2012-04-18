@@ -35,13 +35,14 @@ server.configure "production", ->
 server.get "/rankings.json", (req, res, next) ->
   res.json last_pop
 
-setInterval ()->
+
+poll = ()->
   client.lpop "rankings", (error, data) ->
-    if error 
-      return console.log error
-    else
-      if data then last_pop = data
-, pop_interval
+    if error then return console.log error
+    else if data then last_pop = data
+    setTimeout poll, pop_interval
+
+poll()
 
 server.listen port, host
 console.log "Started listening on " + host + ":" + port + " /w redis connection " + redis_host + ":" + redis_port
