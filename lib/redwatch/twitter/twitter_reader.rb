@@ -14,7 +14,7 @@ module Redwatch
     end
 
     def start
-      stream = TwitterStream.new(:path => '/1/statuses/sample.json', :auth => 'stream_test:k!rkl@nd')
+      stream = TwitterStream.new(:path => '/1/statuses/sample.json', :auth => 'USER:PWD')
                   
       puts("twitter reader starting")
 
