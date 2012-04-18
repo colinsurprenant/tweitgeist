@@ -5,7 +5,7 @@ module Redwatch
     output_fields :json_rankings
 
     TOP_N = 10
-    PUSH_INTERVAL = 2
+    FLUSH_INTERVAL = 2
 
     on_init do
       @rankings = Hash.new
@@ -24,7 +24,7 @@ module Redwatch
     def detach_flusher
       Thread.new do
         Thread.current.abort_on_exception = true
-        sleep(PUSH_INTERVAL)
+        sleep(FLUSH_INTERVAL)
 
         loop do
           sorted = nil
@@ -34,7 +34,7 @@ module Redwatch
           end
           unanchored_emit(sorted.to_json) unless sorted.empty?
             
-          sleep(PUSH_INTERVAL)
+          sleep(FLUSH_INTERVAL)
         end
       end
     end
