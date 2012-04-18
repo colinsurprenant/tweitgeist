@@ -8,7 +8,11 @@
     {
       "name": "Colin Surprenant",
       "email": "colin.surprenant@gmail.com"
-    } 
+    },
+    {
+      "name": "Nicolas Brochu",
+      "email": "info@nbrochu.com"
+    }
   ],
   "main": "server.js",
   "dependencies" : {
