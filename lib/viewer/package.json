@@ -1,0 +1,22 @@
+{
+  "name": "redwatch-viewer",
+  "preferGlobal": "false",
+  "version": "0.1.0",
+  "author": "Francois Lafortune <code@quickredfox.at>",
+  "description": "Redwatch demo viewer",
+  "contributors": [ 
+    {
+      "name": "Colin Surprenant",
+      "email": "colin.surprenant@gmail.com"
+    } 
+  ],
+  "main": "server.js",
+  "dependencies" : {
+    "redis"   :  "0.7.1",
+    "express" :  "2.5.x"
+  },
+  "license": "Apache 2.0",
+  "engine": {
+    "node": ">=0.4"
+  }
+}
