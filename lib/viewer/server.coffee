@@ -1,7 +1,9 @@
-port = 80
-host = "127.0.0.1"
-redis_host = "127.0.0.1"
-redis_port = 6379
+port         = 80
+host         = "127.0.0.1"
+redis_host   = "127.0.0.1"
+redis_port   = 6379
+last_pop     = null
+pop_interval = 1000
 process.argv.forEach (val, index, params) ->
   port = parseFloat(params[index + 1])  if /\-\-port/.test(val)
   host = String(params[index + 1]).trim()  if /\-\-host/.test(val)
@@ -31,9 +33,15 @@ server.configure "production", ->
   server.use express.errorHandler()
 
 server.get "/rankings.json", (req, res, next) ->
+  res.json last_pop
+
+setInterval ()->
   client.lpop "rankings", (error, data) ->
-    return next(error)  if error
-    res.json data
+    if !error and data isnt null
+      last_pop = data
+    else
+      console.log error
+, pop_interval
 
 server.listen port, host
 console.log "Started listening on " + host + ":" + port + " /w redis connection " + redis_host + ":" + redis_port
