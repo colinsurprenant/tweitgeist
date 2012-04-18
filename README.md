@@ -1,4 +1,4 @@
-# Redwatch v0.0.1 - RedStorm/Storm realtime Twitter hashtag trending 
+# redwatch v0.0.1
 
 Redwatch analyses the Twitter Spitzer hose and compute in realtime the top trending hashtags using [RedStorm](https://github.com/colinsurprenant/redstorm)/[Storm](https://github.com/nathanmarz/storm).
 
