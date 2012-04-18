@@ -37,10 +37,10 @@ server.get "/rankings.json", (req, res, next) ->
 
 setInterval ()->
   client.lpop "rankings", (error, data) ->
-    if !error and data isnt null
-      last_pop = data
+    if error 
+      return console.log error
     else
-      console.log error
+      if data then last_pop = data
 , pop_interval
 
 server.listen port, host
