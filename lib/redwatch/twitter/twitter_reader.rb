@@ -3,6 +3,7 @@ $:.unshift File.dirname(__FILE__) + '/../../../'
 require 'rubygems'
 require 'redis'
 require 'lib/redwatch/twitter/twitter_stream'
+require 'config/twitter_reader'
 
 module Redwatch
 
@@ -14,7 +15,7 @@ module Redwatch
     end
 
     def start
-      stream = TwitterStream.new(:path => '/1/statuses/sample.json', :auth => 'USER:PWD')
+      stream = TwitterStream.new(:path => '/1/statuses/sample.json', :auth => "#{CONFIG[:twitter_user]}:#{CONFIG[:twitter_pwd]}")
                   
       puts("twitter reader starting")
 
