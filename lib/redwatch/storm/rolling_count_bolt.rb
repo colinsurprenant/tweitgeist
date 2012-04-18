@@ -7,7 +7,7 @@ module Redwatch
 
     on_init do
       # 30 buckets of 10 seconds
-      @counter = RollingCounter.new(30, 10) {|hashtag, count| unanchored_emit(hashtag, count)}
+      @counter = RollingCounter.new(60, 10) {|hashtag, count| unanchored_emit(hashtag, count)}
     end
 
     on_receive do |tuple|
