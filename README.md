@@ -68,7 +68,7 @@ Colin Surprenant, [@colinsurprenant][twitter], [https://github.com/colinsurprena
 ## Contributors
 Francois Lafortune, [@quickredfox](http://twitter.com/quickredfox), [https://github.com/quickredfox](http://github.com/quickredfox), code@quickredfox.at
 
-Nicolas Brochu, [@nbrochu](http://twitter.com/nbrochu), [https://github.com/nbrochu](http://github.com/nbrochu), info@nicholasbrochu.com
+Nicholas Brochu, [@nbrochu](http://twitter.com/nbrochu), [https://github.com/nbrochu](http://github.com/nbrochu), info@nicholasbrochu.com
 
 ## License
 Redwatch is distributed under the Apache License, Version 2.0. 
