@@ -1,16 +1,16 @@
 require 'rubygems'      # required for remote cluster exec where TopolyLauncher + require rubygems is not called
 require 'red_storm'     # must be required before bundler for environment setup and after rubygems
 
-require 'lib/redwatch/storm/twitter_stream_spout'
-require 'lib/redwatch/storm/extract_message_bolt'
-require 'lib/redwatch/storm/extract_hashtags_bolt'
-require 'lib/redwatch/storm/rolling_count_bolt'
-require 'lib/redwatch/storm/rank_bolt'
-require 'lib/redwatch/storm/merge_bolt'
+require 'lib/tweitgeist/storm/twitter_stream_spout'
+require 'lib/tweitgeist/storm/extract_message_bolt'
+require 'lib/tweitgeist/storm/extract_hashtags_bolt'
+require 'lib/tweitgeist/storm/rolling_count_bolt'
+require 'lib/tweitgeist/storm/rank_bolt'
+require 'lib/tweitgeist/storm/merge_bolt'
 
-module Redwatch
+module Tweitgeist
  
-  class RedwatchTopology < RedStorm::SimpleTopology
+  class TweitgeistTopology < RedStorm::SimpleTopology
     spout TwitterStreamSpout
         
     bolt ExtractMessageBolt, :parallelism => 3 do

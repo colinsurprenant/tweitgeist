@@ -51,13 +51,13 @@ see the [viewer README](https://github.com/colinsurprenant/tweitgeist/tree/maste
 The RedStorm backend has only been tested in "local" mode. 
 
 ``` sh
-$ redstorm local lib/redwatch/storm/redwatch_topology.rb 
+$ redstorm local lib/tweitgeist/storm/tweitgeist_topology.rb 
 ```
 
 ### Twitter Spitzer stream reader
 
 ``` sh
-$ ruby lib/redwatch/twitter/twitter_reader.rb
+$ ruby lib/tweitgeist/twitter/twitter_reader.rb
 ```
 
 ### Twitter Spitzer stream reader

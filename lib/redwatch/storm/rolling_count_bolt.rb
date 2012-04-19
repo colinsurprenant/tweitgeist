@@ -1,7 +1,7 @@
 require 'json'
-require 'lib/redwatch/rolling_counter'
+require 'lib/tweitgeist/rolling_counter'
 
-module Redwatch
+module Tweitgeist
   class RollingCountBolt < RedStorm::SimpleBolt
     output_fields :hashtag, :count
 

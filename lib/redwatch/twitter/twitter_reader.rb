@@ -2,10 +2,10 @@ $:.unshift File.dirname(__FILE__) + '/../../../'
 
 require 'rubygems'
 require 'redis'
-require 'lib/redwatch/twitter/twitter_stream'
+require 'lib/tweitgeist/twitter/twitter_stream'
 require 'config/twitter_reader'
 
-module Redwatch
+module Tweitgeist
 
   class TwitterReader
     attr_accessor :config
@@ -30,4 +30,4 @@ module Redwatch
   end
 end
 
-Redwatch::TwitterReader.new.start
+Tweitgeist::TwitterReader.new.start

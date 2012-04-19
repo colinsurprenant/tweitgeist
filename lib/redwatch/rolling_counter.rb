@@ -1,6 +1,6 @@
 require 'thread'
 
-module Redwatch
+module Tweitgeist
   class RollingCounter
     attr_writer :active_bucket
 

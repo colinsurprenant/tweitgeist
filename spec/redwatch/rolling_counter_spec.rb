@@ -1,17 +1,17 @@
 require 'spec_helper'
-require 'redwatch/rolling_counter'
+require 'tweitgeist/rolling_counter'
 
-describe Redwatch::RollingCounter do
+describe Tweitgeist::RollingCounter do
 
   it "should initialize" do
-    rc = Redwatch::RollingCounter.new(3, 10)
-    rc = Redwatch::RollingCounter.new(3, 10, {:cleaner => false})
-    rc = Redwatch::RollingCounter.new(3, 10, {:cleaner => false}) {puts("hello")}
-    rc = Redwatch::RollingCounter.new(3, 10) {puts("hello")}
+    rc = Tweitgeist::RollingCounter.new(3, 10)
+    rc = Tweitgeist::RollingCounter.new(3, 10, {:cleaner => false})
+    rc = Tweitgeist::RollingCounter.new(3, 10, {:cleaner => false}) {puts("hello")}
+    rc = Tweitgeist::RollingCounter.new(3, 10) {puts("hello")}
   end
 
   it "should add with single bucket" do
-    rc = Redwatch::RollingCounter.new(3, 10, {:cleaner => false})
+    rc = Tweitgeist::RollingCounter.new(3, 10, {:cleaner => false})
     rc.active_bucket = 0
 
     rc.count("foo").should == 0
@@ -24,7 +24,7 @@ describe Redwatch::RollingCounter do
   end
 
   it "should add with multiple buckets" do
-    rc = Redwatch::RollingCounter.new(3, 10, {:cleaner => false})
+    rc = Tweitgeist::RollingCounter.new(3, 10, {:cleaner => false})
 
     rc.active_bucket = 0
     rc.count("foo").should == 0
@@ -46,7 +46,7 @@ describe Redwatch::RollingCounter do
   end
 
   it "should clean bucket" do
-    rc = Redwatch::RollingCounter.new(3, 10, {:cleaner => false})
+    rc = Tweitgeist::RollingCounter.new(3, 10, {:cleaner => false})
 
     rc.active_bucket = 0
     rc.count("foo").should == 0
@@ -90,7 +90,7 @@ describe Redwatch::RollingCounter do
 
   it "should call on_clean" do
     cleaned = []
-    rc = Redwatch::RollingCounter.new(3, 10, {:cleaner => false}) {|key, total| cleaned << [key, total]}
+    rc = Tweitgeist::RollingCounter.new(3, 10, {:cleaner => false}) {|key, total| cleaned << [key, total]}
 
     rc.active_bucket = 0
     rc.add("foo").should == 1

@@ -1,6 +1,6 @@
 require 'redis'
 
-module Redwatch
+module Tweitgeist
   class MergeBolt < RedStorm::SimpleBolt
     output_fields :json_rankings
 

@@ -35,6 +35,8 @@ server.configure "production", ->
 server.get "/rankings.json", (req, res, next) ->
   res.json last_pop
 
+server.get "/stats.json", (req, res, next) ->
+  res.json "{\"connections\":" + server.connections + "}"
 
 poll = ()->
   client.lpop "rankings", (error, data) ->

@@ -1,7 +1,7 @@
 require 'redis'
 require 'thread'
 
-module Redwatch
+module Tweitgeist
 
   class TwitterStreamSpout < RedStorm::SimpleSpout
     output_fields :tweet

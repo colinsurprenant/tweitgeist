@@ -1,6 +1,6 @@
 require 'json'
 
-module Redwatch
+module Tweitgeist
   class ExtractMessageBolt < RedStorm::SimpleBolt
     output_fields :message
 

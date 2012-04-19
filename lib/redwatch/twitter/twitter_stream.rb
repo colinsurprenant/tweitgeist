@@ -1,7 +1,7 @@
 require 'twitter/json_stream'
 require 'eventmachine'
 
-module Redwatch
+module Tweitgeist
 
   class TwitterStream
     

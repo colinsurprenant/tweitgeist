@@ -1,6 +1,6 @@
 require 'thread'
 
-module Redwatch
+module Tweitgeist
   class RankBolt < RedStorm::SimpleBolt
     output_fields :json_rankings
 

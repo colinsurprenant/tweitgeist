@@ -1,9 +1,9 @@
 {
-  "name": "redwatch-viewer",
+  "name": "tweitgeist-viewer",
   "preferGlobal": "false",
   "version": "0.1.0",
   "author": "Francois Lafortune <code@quickredfox.at>",
-  "description": "Redwatch demo viewer",
+  "description": "Tweitgeist demo viewer",
   "contributors": [ 
     {
       "name": "Colin Surprenant",

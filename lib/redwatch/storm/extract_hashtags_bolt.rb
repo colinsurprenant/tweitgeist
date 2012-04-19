@@ -1,6 +1,6 @@
 require 'json'
 
-module Redwatch
+module Tweitgeist
   class ExtractHashtagsBolt < RedStorm::SimpleBolt
     output_fields :hashtag
 
