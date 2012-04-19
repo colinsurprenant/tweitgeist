@@ -2,6 +2,8 @@
 
 Tweitgeist analyses the Twitter Spitzer hose and compute in realtime the top trending hashtags using [RedStorm](https://github.com/colinsurprenant/redstorm)/[Storm](https://github.com/nathanmarz/storm).
 
+See the live demo on [http://tweitgeist.needium.com/](http://tweitgeist.needium.com/)
+
 There are three components:
 
 - The Twitter Spitzer stream reader which pushes messages in a Redis queue
