@@ -61,7 +61,7 @@ $ redstorm local lib/tweitgeist/storm/tweitgeist_topology.rb
 $ ruby lib/tweitgeist/twitter/twitter_reader.rb
 ```
 
-### Twitter Spitzer stream reader
+### Viewer
 
 see the [viewer README](https://github.com/colinsurprenant/tweitgeist/tree/master/lib/viewer)
 
