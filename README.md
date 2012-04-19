@@ -1,6 +1,6 @@
-# Tweitgeist v0.0.1
+# Tweitgeist v1.0.0
 
-Tweitgeist analyses the Twitter Spitzer hose and compute in realtime the top trending hashtags using [RedStorm](https://github.com/colinsurprenant/redstorm)/[Storm](https://github.com/nathanmarz/storm). What makes this interesting other than being a cool Storm example, is the fact that this architecture can scale at full Twitter Firehose scale without much modifications. 
+Tweitgeist analyses the Twitter Spitzer hose and compute in realtime the top trending hashtags using [RedStorm](https://github.com/colinsurprenant/redstorm)/[Storm](https://github.com/nathanmarz/storm). What makes this interesting other than being a cool Storm example, is the fact that this architecture will work at **full Twitter Firehose scale** without much modifications. 
 
 - See the [slideshare presentation](http://www.slideshare.net/colinsurprenant/twitter-big-data) about Twitter Big Data and Tweitgeist.
 - See the live demo on [http://tweitgeist.needium.com/](http://tweitgeist.needium.com/)
@@ -37,9 +37,9 @@ This has been tested on OSX 10.6.8, Linux 11.10 using JRuby 1.6.7 for the RedSto
 
 ### Viewer
 
-- requires node.js, npm, CoffeeScript
-
-see the [viewer README](https://github.com/colinsurprenant/tweitgeist/tree/master/lib/viewer)
+- requires Node.js
+- requires npm 
+- install CoffeeScript if you want to modify the Node.js server
 
 ## Usage overview
 
@@ -53,13 +53,23 @@ $ redstorm local lib/tweitgeist/storm/tweitgeist_topology.rb
 
 ### Twitter Spitzer stream reader
 
+- modify config/twitter_reader.rb
+
 ``` sh
 $ ruby lib/tweitgeist/twitter/twitter_reader.rb
 ```
 
 ### Viewer
 
-see the [viewer README](https://github.com/colinsurprenant/tweitgeist/tree/master/lib/viewer)
+``` sh
+node server --port 6000 --host locahost --redis-port 1234 --redis-host 127.0.0.1
+```
+or
+
+``` sh
+coffee server.coffee --port 6000 --host locahost --redis-port 1234 --redis-host 127.0.0.1
+```
+
 
 ## Author
 Colin Surprenant, [@colinsurprenant][twitter], [https://github.com/colinsurprenant][github], colin.surprenant@needium.com, colin.surprenant@gmail.com
