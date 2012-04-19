@@ -4,7 +4,7 @@ height:100%;
 }
 body{padding-top:60px;background:none;height:100%;margin-bottom:-60px;}
 body > .container{ 
-  height:680px;position:relative;
+  height:700px;position:relative; /* multiple of 100 will avoid %->px rounding errors */
 }
 .container .bar{
   background-image: -moz-linear-gradient(-90deg, #fff , #000 );
@@ -17,7 +17,8 @@ body > .container{
 }
 .container .cell{
   opacity:0.8;overflow:hidden;
-    text-align:center;
+  text-align:center;
+  white-space:nowrap;
   position:relative;
 }
 .cell .helper{
