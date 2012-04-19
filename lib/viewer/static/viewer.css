@@ -23,15 +23,17 @@ body > .container{
 }
 .cell .counter{
   position:absolute;
-  top:3px;
+  top:2px;
   left:3px;
   font-size:11px;
 }
 .cell .helper{
   display:inline;
   position:relative;
-  top:22px;
-  padding:5px;
+  top:10px;
+  left:20px;
+  padding:3px;
+  font-size:12px;
   font-weight:bold;
   -webkit-border-radius: 6px;
      -moz-border-radius: 6px;
