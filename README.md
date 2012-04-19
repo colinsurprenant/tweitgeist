@@ -1,6 +1,6 @@
-# Redwatch v0.0.1
+# Tweitgeist v0.0.1
 
-Redwatch analyses the Twitter Spitzer hose and compute in realtime the top trending hashtags using [RedStorm](https://github.com/colinsurprenant/redstorm)/[Storm](https://github.com/nathanmarz/storm).
+Tweitgeist analyses the Twitter Spitzer hose and compute in realtime the top trending hashtags using [RedStorm](https://github.com/colinsurprenant/redstorm)/[Storm](https://github.com/nathanmarz/storm).
 
 There are three components:
 
@@ -40,7 +40,7 @@ This has been tested on OSX 10.6.8, Linux 11.10 using JRuby 1.6.7 for the RedSto
 
 - requires node.js, npm, CoffeeScript
 
-see the [viewer README](https://github.com/colinsurprenant/redwatch/tree/master/lib/viewer)
+see the [viewer README](https://github.com/colinsurprenant/tweitgeist/tree/master/lib/viewer)
 
 ## Usage overview
 
@@ -60,7 +60,7 @@ $ ruby lib/redwatch/twitter/twitter_reader.rb
 
 ### Twitter Spitzer stream reader
 
-see the [viewer README](https://github.com/colinsurprenant/redwatch/tree/master/lib/viewer)
+see the [viewer README](https://github.com/colinsurprenant/tweitgeist/tree/master/lib/viewer)
 
 ## Author
 Colin Surprenant, [@colinsurprenant][twitter], [https://github.com/colinsurprenant][github], colin.surprenant@needium.com, colin.surprenant@gmail.com
@@ -71,7 +71,7 @@ Francois Lafortune, [@quickredfox](http://twitter.com/quickredfox), [https://git
 Nicholas Brochu, [@nbrochu](http://twitter.com/nbrochu), [https://github.com/nbrochu](http://github.com/nbrochu), info@nicholasbrochu.com
 
 ## License
-Redwatch is distributed under the Apache License, Version 2.0. 
+Tweitgeist is distributed under the Apache License, Version 2.0. 
 
 [twitter]: http://twitter.com/colinsurprenant
 [github]: https://github.com/colinsurprenant
