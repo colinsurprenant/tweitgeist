@@ -1,0 +1,4 @@
+target/
+examples/
+lib/viewer/node_modules/
+.rvmrc
