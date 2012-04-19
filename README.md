@@ -37,8 +37,9 @@ This has been tested on OSX 10.6.8, Linux 11.10 using JRuby 1.6.7 for the RedSto
 
 - install twitter-stream gem
 - install redis gem
+- install hiredis gem
 
-### Twitter Spitzer stream reader
+### Viewer
 
 - requires node.js, npm, CoffeeScript
 
