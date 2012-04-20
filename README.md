@@ -1,15 +1,14 @@
-# Tweitgeist v0.0.1
+# Tweitgeist v1.0.0
 
-Tweitgeist analyses the Twitter Spitzer hose and compute in realtime the top trending hashtags using [RedStorm](https://github.com/colinsurprenant/redstorm)/[Storm](https://github.com/nathanmarz/storm).
+Tweitgeist analyses the Twitter Spitzer hose and compute in realtime the top trending hashtags using [RedStorm](https://github.com/colinsurprenant/redstorm)/[Storm](https://github.com/nathanmarz/storm). What makes this interesting other than being a cool Storm example, is the fact that this architecture will work at **full Twitter Firehose scale** without much modifications. 
 
-See the live demo on [http://tweitgeist.needium.com/](http://tweitgeist.needium.com/)
+- See the [slideshare presentation](http://www.slideshare.net/colinsurprenant/twitter-big-data) about Twitter Big Data and Tweitgeist.
+- See the live demo on [http://tweitgeist.needium.com/](http://tweitgeist.needium.com/)
 
 There are three components:
 
 - The Twitter Spitzer stream reader which pushes messages in a Redis queue
-
 - The Redstorm analyser which read the Twitter stream queue, computes the trending hashtags and output the top N list every 5 seconds in a Redis queue
-
 - The viewer UI for the visualization
 
 ## Dependencies
@@ -24,9 +23,7 @@ This has been tested on OSX 10.6.8, Linux 11.10 using JRuby 1.6.7 for the RedSto
 ### Redstorm backend
 
 - requires JRuby 1.6
-
 - install [RedStorm](https://github.com/colinsurprenant/redstorm)
-
 - install redis gem
 - install json gem
 - install rake gem
@@ -34,15 +31,15 @@ This has been tested on OSX 10.6.8, Linux 11.10 using JRuby 1.6.7 for the RedSto
 ### Twitter Spitzer stream reader
 
 - required Ruby 1.9.2
-
 - install twitter-stream gem
 - install redis gem
+- install hiredis gem
 
-### Twitter Spitzer stream reader
+### Viewer
 
-- requires node.js, npm, CoffeeScript
-
-see the [viewer README](https://github.com/colinsurprenant/tweitgeist/tree/master/lib/viewer)
+- requires Node.js
+- requires npm 
+- install CoffeeScript if you want to modify the Node.js server
 
 ## Usage overview
 
@@ -56,13 +53,23 @@ $ redstorm local lib/tweitgeist/storm/tweitgeist_topology.rb
 
 ### Twitter Spitzer stream reader
 
+- modify config/twitter_reader.rb
+
 ``` sh
 $ ruby lib/tweitgeist/twitter/twitter_reader.rb
 ```
 
-### Twitter Spitzer stream reader
+### Viewer
 
-see the [viewer README](https://github.com/colinsurprenant/tweitgeist/tree/master/lib/viewer)
+``` sh
+node server --port 6000 --host locahost --redis-port 1234 --redis-host 127.0.0.1
+```
+or
+
+``` sh
+coffee server.coffee --port 6000 --host locahost --redis-port 1234 --redis-host 127.0.0.1
+```
+
 
 ## Author
 Colin Surprenant, [@colinsurprenant][twitter], [https://github.com/colinsurprenant][github], colin.surprenant@needium.com, colin.surprenant@gmail.com
