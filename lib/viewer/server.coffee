@@ -9,6 +9,7 @@ info    = JSON.parse fs.readFileSync 'package.json'
 
 # multi user fix™ 
 last_pop     = null
+last_rate    = 0
 pop_interval = 1000
 
 # All environments
@@ -36,16 +37,24 @@ server.get "/rankings.json", (req, res, next) ->
   res.json last_pop
 
 server.get "/stats.json", (req, res, next) ->
-  res.json "{\"connections\":" + server.connections + "}"
+  res.json "{\"connections\":" + server.connections + ",\"stream_rate\":" + last_rate + "}"
 
-poll = ()->
+poll_rankings = ()->
   client.lpop "rankings", (error, data) ->
     if error then return console.log error
     else if data
       last_pop = if typeof data is 'string' then JSON.parse( data ) else data
-    setTimeout poll, pop_interval
+    setTimeout poll_rankings, pop_interval
 
-poll()
+poll_rankings()
+
+poll_stream_rate = ()->
+  client.lpop "stream_rate", (error, data) ->
+    if error then return console.log error
+    else if data then last_rate = data
+    setTimeout poll_stream_rate, 2000
+
+poll_stream_rate()
 
 server.listen config.port, config.host, ->
   console.log "
