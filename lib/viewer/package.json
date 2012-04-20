@@ -1,22 +1,22 @@
 {
   "name": "tweitgeist-viewer",
   "preferGlobal": "false",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Francois Lafortune <code@quickredfox.at>",
   "description": "Tweitgeist demo viewer",
   "contributors": [ 
     {
-      "name": "Colin Surprenant",
+      "name":  "Colin Surprenant",
       "email": "colin.surprenant@gmail.com"
     },
     {
-      "name": "Nicholas Brochu",
+      "name":  "Nicholas Brochu",
       "email": "info@nicholasbrochu.com"
     }
   ],
   "main": "server.js",
   "dependencies" : {
-    "redis"   :  "0.7.1",
+    "redis"   :  "0.7.x",
     "express" :  "2.5.x"
   },
   "license": "Apache 2.0",
