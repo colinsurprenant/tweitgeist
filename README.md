@@ -17,7 +17,7 @@ This has been tested on OSX 10.6.8, Linux 11.10 using JRuby 1.6.7 for the RedSto
 
 ## Installation
 
-- A [Redis](http://redis.io/) server is required
+- [Redis](http://redis.io/) is required
 - [RVM](http://beginrescueend.com/) is highly recommended as you will need to work with both Ruby/JRuby and different gemsets.
 
 ### Redstorm backend
@@ -30,7 +30,7 @@ This has been tested on OSX 10.6.8, Linux 11.10 using JRuby 1.6.7 for the RedSto
 
 ### Twitter Spitzer stream reader
 
-- required Ruby 1.9.2
+- requires Ruby 1.9.2
 - install twitter-stream gem
 - install redis gem
 - install hiredis gem
