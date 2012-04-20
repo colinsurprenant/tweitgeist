@@ -4,7 +4,7 @@ height:100%;
 }
 body{padding-top:60px;background:none;height:100%;margin-bottom:-60px;}
 body > .container{ 
-  height:700px;position:relative; /* multiple of 100 will avoid %->px rounding errors */
+  height:600px;position:relative; /* multiple of 100 will avoid %->px rounding errors */
 }
 .container .bar{
   background-image: -moz-linear-gradient(-90deg, #fff , #000 );
@@ -65,4 +65,8 @@ body > .container{
 -webkit-border-bottom-right-radius: 10px;
    -moz-border-bottom-right-radius: 10px;
         border-bottom-right-radius: 10px;
+}
+
+path:hover {
+  opacity:0.95;
 }
