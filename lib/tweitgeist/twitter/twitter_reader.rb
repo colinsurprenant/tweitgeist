@@ -11,10 +11,14 @@ module Tweitgeist
 
   class TwitterReader
     attr_accessor :config
+
+    STATS_INTERVAL = 10
     
     def initialize
       @redis = Redis.new(:host => "localhost", :port => 6379)
-      @stats = Queue.new
+      @tweets = Queue.new
+      @tweets_count = 0
+      @tweets_count_mutex = Mutex.new
       @flusher = detach_flusher
     end
 
@@ -23,17 +27,12 @@ module Tweitgeist
                   
       puts("twitter reader starting")
 
-      tweet_count = 0
-      start_time = Time.now.to_i
+      i = 0
       stream.on_item do |item|
-        @redis.rpush("twitter_stream", item)
-        tweet_count += 1
-        if tweet_count % 1000 == 0
-          now = Time.now.to_i
-          @stats << [tweet_count, now - start_time]
-          start_time = now
-        end
+        @tweets << item
+        @tweets_count_mutex.synchronize {@tweets_count += 50} if (i += 1) % 50 == 0
       end
+
       stream.on_error {|message| puts("stream error=#{message}")}
       stream.on_failure {|message| puts("stream failure=#{message}")}
       stream.on_reconnect {|timeout, retries| puts("stream reconnect timeout=#{timeout}, retries=#{retries}")}
@@ -48,9 +47,26 @@ module Tweitgeist
       Thread.new do
         Thread.current.abort_on_exception = true
 
+        previous_tweets_count = @tweets_count_mutex.synchronize {@tweets_count}
+        stats_start = Time.now.to_i
         loop do
-          stat = @stats.pop
-          @redis.rpush("stream_rate", stat[0]/stat[1])
+          sleep(1)
+
+          if (size = @tweets.size) > 0
+            @redis.pipelined do
+              size.times.each {@redis.rpush("twitter_stream", @tweets.pop)}
+            end
+          end
+
+          if (elapsed = (Time.now.to_i - stats_start)) >= STATS_INTERVAL
+            tweets_count = @tweets_count_mutex.synchronize {@tweets_count} 
+            rate = (tweets_count - previous_tweets_count) / elapsed
+            previous_tweets_count = tweets_count
+            stats_start = Time.now.to_i
+            @redis.rpush("stream_rate", rate)
+
+            puts("twitter reader: rate=#{rate}/s, queue size=#{size}, tweets count=#{tweets_count}")
+          end
         end
       end
     end
