@@ -34,14 +34,13 @@ module Tweitgeist
     end
 
     configure do |env|
+      debug false
       case env
       when :local
-        debug false
         max_task_parallelism 10
       when :cluster
-        debug true
         num_workers 20
-        max_spout_pending(1000);
+        max_spout_pending 5000
       end
     end
   end
