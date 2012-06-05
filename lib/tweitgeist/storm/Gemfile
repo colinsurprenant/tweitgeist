@@ -1,6 +1,4 @@
 source :rubygems
 
-platforms :jruby
-  gem 'redis', '~> 2.2.2'
-  gem 'json'
-end
+gem 'redis', '~> 2.2.2'
+gem 'json'

@@ -1,5 +1,6 @@
 require 'rubygems'      # required for remote cluster exec where TopolyLauncher + require rubygems is not called
 require 'red_storm'     # must be required before bundler for environment setup and after rubygems
+require 'bundler/setup'
 
 require 'lib/tweitgeist/storm/twitter_stream_spout'
 require 'lib/tweitgeist/storm/extract_message_bolt'
