@@ -1,4 +1,4 @@
-# Tweitgeist v1.0.0
+# Tweitgeist v1.1.0
 
 Tweitgeist analyses the Twitter Spitzer hose and compute in realtime the top trending hashtags using [RedStorm](https://github.com/colinsurprenant/redstorm)/[Storm](https://github.com/nathanmarz/storm). What makes this interesting other than being a cool Storm example, is the fact that this architecture will work at **full Twitter Firehose scale** without much modifications. 
 
@@ -22,18 +22,35 @@ This has been tested on OSX 10.6.8, Linux 11.10 using JRuby 1.6.7 for the RedSto
 
 ### Redstorm backend
 
-- requires JRuby 1.6
-- install [RedStorm](https://github.com/colinsurprenant/redstorm)
-- install redis gem
-- install json gem
-- install rake gem
+- requires JRuby 1.6.7 
+
+- install the RedStorm gem using bundler with the supplied Gemfile
+
+  ``` sh
+  $ jruby --1.9 -S bundle install
+  ```
+
+- run RedStorm installation
+
+  ``` sh
+  $ jruby --1.9 -S bundle exec redstorm --1.9 install
+  ```
+
+- package the topology required gems
+
+  ``` sh
+  $ jruby --1.9 -S bundle exec redstorm --1.9 bundle --gemfile lib/tweitgeist/storm/Gemfile
+  ```
 
 ### Twitter Spitzer stream reader
 
 - requires Ruby 1.9.2
-- install twitter-stream gem
-- install redis gem
-- install hiredis gem
+
+- install required gems using bundler with the supplied Gemfile
+
+  ``` sh
+  $ bundle install
+  ```
 
 ### Viewer
 
@@ -48,7 +65,7 @@ This has been tested on OSX 10.6.8, Linux 11.10 using JRuby 1.6.7 for the RedSto
 The RedStorm backend has only been tested in "local" mode. 
 
 ``` sh
-$ redstorm local lib/tweitgeist/storm/tweitgeist_topology.rb 
+$ jruby --1.9 -S bundle exec redstorm --1.9 local lib/tweitgeist/storm/tweitgeist_topology.rb
 ```
 
 ### Twitter Spitzer stream reader
