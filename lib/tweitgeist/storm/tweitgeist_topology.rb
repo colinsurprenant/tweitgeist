@@ -1,4 +1,3 @@
-require 'bundler/setup' # needed for local mode with redstorm gem installed from git
 require 'red_storm'
 
 require 'lib/tweitgeist/storm/twitter_stream_spout'

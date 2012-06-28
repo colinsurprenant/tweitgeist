@@ -1,7 +1,7 @@
 source :rubygems
 
 platform :jruby do
-  gem 'redstorm', '~> 0.6.0', :git => "git://github.com/colinsurprenant/redstorm.git", :branch => "v0.6.0"
+  gem 'redstorm', '~> 0.6.0', :git => "git://github.com/colinsurprenant/redstorm.git", :branch => "dependencies"
 end
 
 platform :mri  do
