@@ -2,8 +2,6 @@ require 'redis'
 
 module Tweitgeist
   class MergeBolt < RedStorm::SimpleBolt
-    output_fields :json_rankings
-
     TOP_N = 10
     PUSH_INTERVAL = 5
     HISTORY_SIZE = (24*60*60)/PUSH_INTERVAL # 24h

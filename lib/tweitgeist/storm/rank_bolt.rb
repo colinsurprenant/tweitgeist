@@ -2,8 +2,6 @@ require 'thread'
 
 module Tweitgeist
   class RankBolt < RedStorm::SimpleBolt
-    output_fields :json_rankings
-
     TOP_N = 10
     FLUSH_INTERVAL = 2
 

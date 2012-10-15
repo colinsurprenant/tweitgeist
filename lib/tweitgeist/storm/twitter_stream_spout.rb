@@ -4,8 +4,6 @@ require 'thread'
 module Tweitgeist
 
   class TwitterStreamSpout < RedStorm::SimpleSpout
-    output_fields :tweet
-
     on_send {@q.pop if @q.size > 0}
 
     on_init do

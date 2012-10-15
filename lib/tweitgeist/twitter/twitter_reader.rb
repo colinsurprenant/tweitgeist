@@ -1,7 +1,6 @@
 $:.unshift File.dirname(__FILE__) + '/../../../'
 
-require 'rubygems'
-require 'redis/connection/hiredis'
+require 'bundler/setup'
 require 'redis'
 require 'thread'
 require 'lib/tweitgeist/twitter/twitter_stream'
@@ -15,7 +14,7 @@ module Tweitgeist
     STATS_INTERVAL = 10
     
     def initialize
-      @redis = Redis.new(:host => "localhost", :port => 6379)
+      @redis = Redis.new(:host => "localhost", :port => 6379, :driver => :hiredis)
       @tweets = Queue.new
       @tweets_count = 0
       @tweets_count_mutex = Mutex.new
