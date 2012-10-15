@@ -2,3 +2,7 @@ target/
 examples/
 lib/viewer/node_modules/
 .rvmrc
+storm
+ivy
+.bundle
+Gemfile.lock
