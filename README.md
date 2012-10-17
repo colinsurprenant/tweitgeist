@@ -51,7 +51,7 @@ This has been tested on OSX 10.6+, Linux 11.10 & 12.04 using JRuby 1.6.x for the
 - if you plan on running the topology on a cluster, package the topology jar
 
   ``` sh
-  bundle exec redstorm jar lib/tweitgeist/storm
+  bundle exec redstorm jar lib/tweitgeist/
   ```
 
 ### Twitter Spitzer stream reader
@@ -67,14 +67,35 @@ This has been tested on OSX 10.6+, Linux 11.10 & 12.04 using JRuby 1.6.x for the
 ### Viewer
 
 - requires Node.js
-- requires npm 
+
+  ``` sh
+  $ sudo apt-get install nodejs
+  ```
+
+- requires npm
+
+  ``` sh
+  $ sudo apt-get install npm
+  ```
+
 - install CoffeeScript if you want to modify the Node.js server
+
+  ``` sh
+  $ npm install -g coffee-script
+  ```
+
+- install other dependencies
+
+  ``` sh
+  $ cd lib/viewer
+  $ npm install .
+  ```
 
 ## Usage overview
 
 ### Redstorm backend
 
-To run the RedStorm backend in "local" mode. 
+To run the RedStorm backend in **local** mode. 
 
 - set JRuby in 1.9 mode by default
 
@@ -86,9 +107,20 @@ To run the RedStorm backend in "local" mode.
 $ bundle exec redstorm local lib/tweitgeist/storm/tweitgeist_topology.rb
 ```
 
+To run the RedStorm backend in **remote cluster** mode.
+
+- add your cluster to ~/.storm/storm.yaml
+
+- make sure your locally installed storm distribution `bin/` directory is in the path
+
+``` sh
+$  bundle exec redstorm cluster lib/tweitgeist/storm/tweitgeist_topology.rb
+```
+
+
 ### Twitter Spitzer stream reader
 
-- modify config/twitter_reader.rb
+- edit `config/twitter_reader.rb` to add your credentials
 
 ``` sh
 $ ruby lib/tweitgeist/twitter/twitter_reader.rb
