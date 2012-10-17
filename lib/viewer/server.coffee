@@ -1,24 +1,24 @@
-fs      = require 'fs'
-config  = require( './server_modules/options.coffee' ).parse( process.argv )
-mock    = require './server_modules/mock.coffee'
 express = require 'express'
 redis   = require 'redis'
-client  = if config.mock then mock else redis.createClient( config.redis_port, config.redis_host )
-server  = express.createServer()
+fs      = require 'fs'
+config  = require('./server_modules/options.coffee').parse(process.argv)
+mock    = require './server_modules/mock.coffee'
+client  = if config.mock then mock else redis.createClient(config.redis_port, config.redis_host)
 info    = JSON.parse fs.readFileSync 'package.json'
+server  = express.createServer()
 
 # multi user fix™ 
 last_pop     = null
 last_rate    = 0
 pop_interval = 1000
 
-# All environments
+# all environments
 server.configure ->
   server.use express.methodOverride()
   server.use express.bodyParser()
   server.use server.router
 
-# Development 
+# development 
 server.configure "development", ->
   server.use express["static"](__dirname + "/static")
   server.use express.errorHandler(
@@ -26,7 +26,7 @@ server.configure "development", ->
     showStack: true
   )
   
-# Production
+# production
 server.configure "production", ->
   server.use express["static"](__dirname + "/static",
     maxAge: oneYear
@@ -39,11 +39,11 @@ server.get "/rankings.json", (req, res, next) ->
 server.get "/stats.json", (req, res, next) ->
   res.json "{\"connections\":" + server.connections + ",\"stream_rate\":" + last_rate + "}"
 
-poll_rankings = ()->
+poll_rankings = () ->
   client.lpop "rankings", (error, data) ->
     if error then return console.log error
     else if data
-      last_pop = if typeof data is 'string' then JSON.parse( data ) else data
+      last_pop = if typeof data is 'string' then JSON.parse(data) else data
     setTimeout poll_rankings, pop_interval
 
 poll_rankings()
@@ -57,15 +57,11 @@ poll_stream_rate = ()->
 poll_stream_rate()
 
 server.listen config.port, config.host, ->
-  console.log "
-  \nTweitgeist node server v#{info.version}\n
-  \nStarted listening on 
-  \n host:#{config.host} 
-  \n port:#{config.port}"
+  console.log(
+    "\ntweitgeist node server v#{info.version}\n" +
+    "\nstarted listening on host #{config.host} port #{config.port}"
+  )
   if config.mock
-    console.log "With mock data"
+    console.log "using mock data"
   else
-    console.log "
-    With Redis redis connection 
-    \n host:#{config.redis_host} 
-    \n port:#{config.redis_port}"
+    console.log "using redis on host #{config.redis_host} port #{config.redis_port}"

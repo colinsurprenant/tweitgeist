@@ -1,7 +1,7 @@
 {
   "name": "tweitgeist-viewer",
   "preferGlobal": "false",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "Francois Lafortune <code@quickredfox.at>",
   "description": "Tweitgeist demo viewer",
   "contributors": [ 
