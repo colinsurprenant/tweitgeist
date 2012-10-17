@@ -133,13 +133,13 @@ $ ruby lib/tweitgeist/twitter/twitter_reader.rb
 ### Viewer
 
 ``` sh
-$ coffee server.coffee --port 8080 --host locahost --redis-port 6379 --redis-host 127.0.0.1
+$ coffee server.coffee --port 8080 --host 127.0.0.1 --redis-port 6379 --redis-host 127.0.0.1
 ```
 
 or (with simulated data in case of no redis)
 
 ``` sh
-$ coffee server.coffee --port 8080 --host locahost --mock
+$ coffee server.coffee --port 8080 --host 127.0.0.1 --mock
 ```
 
 
