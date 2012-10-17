@@ -95,23 +95,25 @@ This has been tested on OSX 10.6+, Linux 11.10 & 12.04 using JRuby 1.6.x for the
 
 ### Redstorm backend
 
-To run the RedStorm backend in **local** mode. 
+- requires JRuby 1.6.x
 
 - set JRuby in 1.9 mode by default
 
   ``` sh
   export JRUBY_OPTS=--1.9
   ```
+ 
+#### RedStorm backend in **local** mode. 
 
 ``` sh
 $ bundle exec redstorm local lib/tweitgeist/storm/tweitgeist_topology.rb
 ```
 
-To run the RedStorm backend in **remote cluster** mode.
+#### RedStorm backend in **remote cluster** mode.
 
-- add your cluster to ~/.storm/storm.yaml
+- add your cluster info to `~/.storm/storm.yaml` see [setting up a Storm development environment](https://github.com/nathanmarz/storm/wiki/Setting-up-development-environment)
 
-- make sure your locally installed storm distribution `bin/` directory is in the path
+- make sure your locally installed storm distribution `bin/` directory is in your $PATH
 
 ``` sh
 $  bundle exec redstorm cluster lib/tweitgeist/storm/tweitgeist_topology.rb
@@ -119,6 +121,8 @@ $  bundle exec redstorm cluster lib/tweitgeist/storm/tweitgeist_topology.rb
 
 
 ### Twitter Spitzer stream reader
+
+- requires Ruby 1.9.x
 
 - edit `config/twitter_reader.rb` to add your credentials
 
