@@ -10,6 +10,11 @@ platform :mri  do
   gem 'hiredis', '~> 0.4.5'
 end
 
+group :test do
+  gem 'rake'
+  gem 'rspec', '~> 2.11.0'
+end
+
 group :topology do
   gem 'redis', '~> 3.0.2', :platforms => :jruby
   gem 'json', :platforms => :jruby
