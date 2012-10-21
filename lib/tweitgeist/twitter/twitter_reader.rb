@@ -24,7 +24,7 @@ module Tweitgeist
     def start
       stream = TwitterStream.new(:path => '/1/statuses/sample.json', :auth => "#{CONFIG[:twitter_user]}:#{CONFIG[:twitter_pwd]}")
                   
-      puts("twitter reader starting")
+      puts("TwitterReader starting")
 
       i = 0
       stream.on_item do |item|
@@ -36,8 +36,13 @@ module Tweitgeist
       stream.on_failure {|message| puts("stream failure=#{message}")}
       stream.on_reconnect {|timeout, retries| puts("stream reconnect timeout=#{timeout}, retries=#{retries}")}
 
-      puts("opening stream connection")      
-      stream.run
+      puts("opening stream connection")
+      begin
+        stream.run
+      ensure
+        puts("closing stream connection")
+        stream.stop
+      end
     end     
 
     private
@@ -73,4 +78,10 @@ module Tweitgeist
   end
 end
 
-Tweitgeist::TwitterReader.new.start
+loop do
+  begin
+    Tweitgeist::TwitterReader.new.start
+  rescue
+    puts("TwitterReader exception=##{$!.inspect}")
+  end
+end
