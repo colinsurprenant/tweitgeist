@@ -1,7 +1,7 @@
 source :rubygems
 
 platform :jruby do
-  gem 'redstorm', '~> 0.6.4.b1', :git => "git://github.com/colinsurprenant/redstorm.git", :branch => "v0.6.4"
+  gem 'redstorm', '~> 0.6.4'
 end
 
 platform :mri  do
@@ -18,4 +18,5 @@ end
 group :topology do
   gem 'redis', '~> 3.0.2', :platforms => :jruby
   gem 'json', :platforms => :jruby
+  gem 'twitter-text', '~> 1.5.0', :platform => :jruby
 end
